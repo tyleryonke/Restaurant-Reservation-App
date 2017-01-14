@@ -1,6 +1,6 @@
 # Restaurant-Reservation-App
 
-The restuarant reservation app allows users to reserve tables, wait on a waiting list, and see their place in line. This application demonstrates the functionality of a Node. server built with Express.
+The Restaurant Reservation App allows users to reserve tables, wait on a waiting list, and see their place in line. This application demonstrates the functionality of a Node. server built with Express.
 
 
 Features include:
