@@ -61,32 +61,33 @@
       </div>
     </div>
 
-        <script type="text/javascript">
-          // Question: What does this code do?
-          $("#add-btn").on("click", function(event) {
-            event.preventDefault();
-            var newTable = {
-              name: $("#name").val().trim(),
-              phonenumber: $("#phonenumber").val().trim(),
-              email: $("#email").val().trim(),
-              codename: $("#codename").val().trim()
-            };
+  <script type="text/javascript">
+// Listens for submission of table reservation data.
+$("#add-btn").on("click", function(event) {
+  event.preventDefault();
+  var newTable = {
+    name: $("#name").val().trim(),
+    phonenumber: $("#phonenumber").val().trim(),
+    email: $("#email").val().trim(),
+    codename: $("#codename").val().trim()
+  };
 
-            // Question: What does this code do??
-            $.post("/api/new", newTable)
-            .done(function(data) {
-              console.log(data);
+  // "Handshake", sends the new table reservation data and clears the form.
+  $.post("/api/new", newTable)
+    .done(function(data) {
+      console.log(data);
 
-              $("#name").val("");
-              $("#phonenumber").val("");
-              $("#email").val("");
-              $("#codename").val("");
-            });
+      $("#name").val("");
+      $("#phonenumber").val("");
+      $("#email").val("");
+      $("#codename").val("");
+    });
 
 
 
-          });
-        </script>
+});
+  </script>
+
 
 </body>
 </html>

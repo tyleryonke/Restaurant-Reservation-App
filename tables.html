@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Restaurant - Express</title>
@@ -8,30 +9,29 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <style>
-  h1,h2{
+  h1,
+  h2 {
     text-align: center;
-
   }
-  button{
+  
+  button {
     text-align: center;
   }
   </style>
 </head>
-<body>
 
+<body>
   <div class="container">
     <div class="jumbotron">
       <h1>Restaurant</h1>
       <h2>Restaurant Description Forthcoming</h2>
       <hr>
     </div>
-
     <div class="row">
-
-      <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span> Home </button></a>
-
+      <a href="/">
+        <button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span> Home </button>
+      </a>
       <div class="col-lg-12">
-
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title"><strong>Current Reservations</strong></h3>
@@ -39,40 +39,37 @@
           <div class="panel-body" id="tablesDisplay">
             <ul class="list-group" id="tablelist"></ul>
           </div>
-            <br>
-
-
+          <br>
           <div class="panel-heading">
             <h3 class="panel-title"><strong>Waiting List</strong></h3>
           </div>
-
           <div class="panel-body" id="waitlistDisplay"></div>
-            <ul class="list-group" id="waitlist"></ul>
-          </div>
+          <ul class="list-group" id="waitlist"></ul>
         </div>
       </div>
     </div>
+  </div>
+  <script type="text/javascript">
 
-<script type="text/javascript">
+  //Gets the current reserved tables and populates the data for display.
+  
+  $.get("/tabledata", function(data) {
+    var parsedData = JSON.parse(data);
+    console.log(parsedData);
 
-    $.get("/tabledata", function(data) {
-      var parsedData = JSON.parse(data);
-      console.log(parsedData);
+    if (data) {
 
-      if (data) {
+      document.getElementById('tablelist').innerHTML = parsedData.tables.map(function(item) {
+        return '<div class= "well">' + item.name + '</div>'
+      }).join('');
 
-        document.getElementById('tablelist').innerHTML = parsedData.tables.map(function(item){
-          return '<div class= "well">'+item.name+'</div>'
-        }).join('');
+      document.getElementById('waitlist').innerHTML = parsedData.waitlist.map(function(item) {
+        return '<div class= "well">' + item.name + '</div>'
+      }).join('');
+    }
 
-        document.getElementById('waitlist').innerHTML = parsedData.waitlist.map(function(item){
-          return '<div class= "well">'+item.name+'</div>'
-        }).join('');
-      }
-
-    });
-
-</script>
-
+  });
+  </script>
 </body>
+
 </html>

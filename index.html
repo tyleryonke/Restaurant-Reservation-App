@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Restaurant</title>
@@ -8,21 +9,20 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <style>
-  h1,h2{
+  h1,
+  h2 {
     text-align: center;
-
   }
   </style>
-
 </head>
-<body>
 
+<body>
   <div class="container">
     <div class="jumbotron">
       <h1>Restaurant</h1>
       <h2>Restaurant Description Forthcoming</h2>
       <hr>
-      <h2 id="fullmessage"> We only have <span id="tablesleft"> </span> table left! Reserve now!! <h2>
+      <h2 id="fullmessage"> We only have <span id="tablesleft"> </span> table left! Reserve now! <h2>
       <br>
       <a href="/reserve"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span> Make Reservation</button></a>
      <a href="/tables"><button type="button" class="btn btn-cautions btn-lg"><span class="glyphicon glyphicon-plus"></span> Tables </button></a>
@@ -30,6 +30,7 @@
 
     <script type="text/javascript">
 
+        // Getting current table data and notifying how many tables left.
         $.get("/tabledata", function(data) {
           var parsedData = JSON.parse(data);
           console.log(parsedData);
